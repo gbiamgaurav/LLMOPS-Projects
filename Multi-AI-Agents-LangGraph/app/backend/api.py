@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 from app.core.ai_agent import get_response_from_ai_agents
-from app.config.settings import Settings
+from app.config.settings import settings
 from app.common.logger import get_logger
 from app.common.custom_exception import CustomException
 
@@ -23,7 +23,7 @@ class RequestState(BaseModel):
 @app.post("/chat")
 def chat_endpoint(request: RequestState):
     logger.info(f"Received chat request: {request.model_name}")
-    if request.model_name not in Settings.ALLOWED_MODEL_NAMES:
+    if request.model_name not in settings.ALLOWED_MODEL_NAMES:
         logger.warning("Invalid model name provided")
         raise HTTPException(status_code=400, detail="Invalid model name provided")
 

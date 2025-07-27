@@ -17,14 +17,14 @@ st.set_page_config(
 
 st.title("Multi AI Agent")
 
-system_prompt = st.text_area(placeholder="Define your AI Agent")
+system_prompt = st.text_area("System Prompt", placeholder="Define your AI Agent")
 selected_model = st.selectbox(
     "Select your Model: ", settings.ALLOWED_MODEL_NAMES)
 
 allow_web_search = st.checkbox("Allow web search")
 
 
-user_query = st.text_area(
+user_query = st.text_area("User query",
     placeholder="Enter your query here",)
 
 API_URL = "http://127.0.0.1:9999/chat"

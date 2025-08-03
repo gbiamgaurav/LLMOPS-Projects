@@ -1,5 +1,4 @@
 
-
 import os
 import sys
 from dotenv import load_dotenv
@@ -84,7 +83,7 @@ class ModelLoader:
         elif provider == "groq":
             llm=ChatGroq(
                 model=model_name,
-                api_key=self.api_keys["GROQ_API_KEY"],
+                api_key=self.api_keys["GROQ_API_KEY"], #type: ignore
                 temperature=temperature,
             )
             return llm
@@ -119,6 +118,4 @@ if __name__ == "__main__":
     
     # Test the ModelLoader
     result=llm.invoke("Hello, how are you?")
-    print(result)
     print(f"LLM Result: {result.content}")
-    print("ALL COMPLETE!")
